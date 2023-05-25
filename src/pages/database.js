@@ -1,9 +1,11 @@
 import { useState, useEffect} from "react";
 import axios from "axios";
+import { useRouter } from 'next/router'
 
 export default function Database(){
     const [data, setData] = useState([]);
-
+    const router = useRouter()
+    
     useEffect(() => {
         fetchData();
     }, []);
@@ -18,7 +20,12 @@ export default function Database(){
     };
     return(
         <div>
-            <div className='flex justify-center items-center h-screen'>
+            <div className='flex flex-col justify-center items-center h-screen'>
+                <div className="flex top-4 absolute">
+                    <p onClick={() => {router.push('/')}} className="p-4 text-lg">Home 🏠</p>
+                    <p onClick={() => {router.push('/form')}} className="p-4 text-lg">Form 📝</p>
+                    <p onClick={() => {router.push('/database')}} className="p-4 text-lg">Database 🧩</p>
+                </div>
                 <div className="h-1/2 w-1/2 flex flex-col items-center">
                     <p className="text-4xl font-Quicksand m-4">This is the Database</p>
 
